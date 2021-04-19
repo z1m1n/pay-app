@@ -11,7 +11,7 @@ const App: FC = () => (
 
         return (
           <RouteWrapper 
-            key={`site-route-${index}`}
+            key={`app-route-${index}`}
             path={path}
             component={component}
             title={title}

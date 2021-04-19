@@ -8,14 +8,27 @@ export interface AppRoute {
   layout: FC<any>;
 };
 
-const BlockLayout = lazy(() => import("layouts/Block"));
+const BlockLayout = lazy(() => import('layouts/Block'));
+const MainLayout = lazy(() => import('layouts/Main'));
 
 const routes: AppRoute[] = [
   {
     path: '/checkout',
-    component: lazy(() => import("pages/Checkout")),
+    component: lazy(() => import('pages/Checkout')),
     title: 'Checkout',
     layout: BlockLayout
+  },
+  {
+    path: '/timeline',
+    component: lazy(() => import('pages/Timeline')),
+    title: 'Timeline',
+    layout: MainLayout
+  },
+  {
+    path: '/cards',
+    component: lazy(() => import('pages/Cards')),
+    title: 'Saved Cards',
+    layout: MainLayout
   }
 ];
 

@@ -1,0 +1,16 @@
+@import "styles/variables";
+
+.app-layout-block {
+  .app-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .app-content-box {
+      border: 1px solid $border-color;
+      max-width: 20rem;
+      width: 100%;
+      padding: 1rem;
+    }
+  }
+}
