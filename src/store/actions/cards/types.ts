@@ -3,7 +3,7 @@ export const EDIT_CARD = 'EDIT_CARD';
 export const DELETE_CARD = 'DELETE_CARD';
 
 export interface Card {
-
+  id: string;
 };
 
 interface AddCardAction {
@@ -18,7 +18,7 @@ interface EditCardAction {
 
 interface DeleteCardAction {
   type: typeof DELETE_CARD,
-  payload: string;
+  payload: Card;
 }
 
 export type CardActionTypes = AddCardAction | EditCardAction | DeleteCardAction;

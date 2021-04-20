@@ -7,11 +7,11 @@ const cardsReducer = (cards = initialState, action: CardActionTypes) => {
 
   switch (type) {
     case ADD_CARD:
-      return payload;
+      return [...cards, payload];
     case EDIT_CARD:
-      return payload;
+      return cards.map((card: Card) => card.id === payload.id ? { ...card, ...payload } : card);
     case DELETE_CARD:
-      return [];
+      return cards.filter(({ id }) => id !== payload.id);
     default:
       return cards;
   };

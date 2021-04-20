@@ -7,7 +7,7 @@ const checkoutReducer = (checkouts = initialState, action: CheckoutActionTypes) 
 
   switch (type) {
     case MAKE_PAYMENT:
-      return payload;
+      return [...checkouts, payload];
     default: 
       return checkouts;
   }
