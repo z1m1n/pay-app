@@ -1,0 +1,14 @@
+.page-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .loader {
+    padding: 1.25rem;
+
+    .spinner-border {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+}

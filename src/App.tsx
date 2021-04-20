@@ -3,9 +3,17 @@ import { Redirect, Switch } from 'react-router';
 import routes, { AppRoute } from 'routes';
 import RouteWrapper from 'routes/RouteWrapper';
 import { Route } from 'react-router-dom';
+import LoadingPage from 'pages/Loading';
+import BlockLayout from 'layouts/Block';
 
 const App: FC = () => (
-  <Suspense fallback={<>Loading...</>}>
+  <Suspense 
+    fallback={
+      <BlockLayout>
+        <LoadingPage />
+      </BlockLayout>
+    }
+  >
     <Switch>
       <Route
         exact

@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import Header from 'components/layout/Header';
+import Footer from 'components/layout/Footer';
 
 import './Block.scss';
 
@@ -11,6 +12,7 @@ const BlockLayout: FC = ({ children }) => (
         {children}
       </div>
     </div>
+    <Footer />
   </div>
 );
 

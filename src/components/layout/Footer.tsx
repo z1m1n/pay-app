@@ -1,7 +1,13 @@
 import { FC } from 'react';
 
+import './Footer.scss';
+
 const Footer: FC = () => (
-  <div>1</div>
+  <footer className="app-footer">
+    <div className="container">
+      2021 &copy;
+    </div>
+  </footer>
 );
 
 export default Footer;
