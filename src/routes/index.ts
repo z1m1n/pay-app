@@ -1,7 +1,7 @@
 import { FC, lazy, LazyExoticComponent } from "react";
 
 export interface AppRoute {
-  path: string;
+  path: string | string[];
   component: LazyExoticComponent<FC<any>>;
   exact?: boolean;
   title: string;
