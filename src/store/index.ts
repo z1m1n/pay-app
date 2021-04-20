@@ -1,7 +1,8 @@
 import { createStore } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import rootReducer from "./reducer";
+import rootReducer from "store/reducer";
+import { InitialState } from "store/types";
 
 const persistConfig = {
   key: `pay-app`,
@@ -9,7 +10,7 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-const configureStore = (initalState?: {}) => {
+const configureStore = (initalState?: InitialState) => {
   return createStore(persistedReducer, initalState);
 };
 
