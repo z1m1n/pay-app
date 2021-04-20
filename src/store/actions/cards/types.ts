@@ -4,6 +4,10 @@ export const DELETE_CARD = 'DELETE_CARD';
 
 export interface Card {
   id: string;
+  name: string;
+  number: string;
+  expiration: string;
+  cvc: string;
 };
 
 interface AddCardAction {
