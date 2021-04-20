@@ -1,12 +1,10 @@
 import { PersistPartial } from 'redux-persist/es/persistReducer';
-
-export type CardsReducer = any;
-
-export type CheckoutReducer = any;
+import { Card } from 'store/actions/cards/types';
+import { Payment } from 'store/actions/checkout/types';
 
 export interface RootState {
-  cards: CardsReducer;
-  checkout: CheckoutReducer;
+  cards?: Card[];
+  checkout?: Payment[];
 };
 
 export interface InitialState extends RootState, PersistPartial {};
