@@ -5,9 +5,9 @@ import { RootState } from 'store/types';
 import { Card } from 'store/actions/cards/types';
 import { useHistory } from 'react-router';
 
-enum PaymentType {
+export enum PaymentType {
   CreditCard = 'card',
-  ApplePAy = 'apple',
+  ApplePay = 'apple',
   SavedCard = 'saved-card'
 };
 
@@ -49,7 +49,7 @@ const ChoosePayment: FC = () => {
             Credit Card
           </option>
           <option 
-            value={PaymentType.ApplePAy}
+            value={PaymentType.ApplePay}
           >
             Apple Pay
           </option>

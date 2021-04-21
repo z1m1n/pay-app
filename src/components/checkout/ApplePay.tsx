@@ -9,7 +9,6 @@ import { uniqueId } from 'utils';
 
 import './ApplePay.scss';
 
-
 const ApplePay: FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();

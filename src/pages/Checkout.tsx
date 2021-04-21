@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import { useParams } from 'react-router';
-import ChoosePayment from 'components/checkout/ChoosePayment';
+import ChoosePayment, { PaymentType } from 'components/checkout/ChoosePayment';
 import ApplePay from 'components/checkout/ApplePay';
+import CreditCard from 'components/checkout/CreditCard';
 
 interface ParamTypes {
   type?: string;
@@ -16,13 +17,13 @@ const CheckoutPage: FC = () => {
       {!type && (
         <ChoosePayment />
       )}
-      {type === 'apple' && (
+      {type === PaymentType.ApplePay && (
         <ApplePay />
       )}
-      {type === 'card' && (
-        <div>
-          card
-        </div>
+      {type === PaymentType.CreditCard && (
+        <CreditCard 
+          id={id} 
+        />
       )}
     </div>
   );
