@@ -13,7 +13,7 @@ const cardsReducer = (cards = initialState, action: CardActionTypes): Card[] => 
 
       return cards.map((card: Card) => card.id === payloadCard.id ? { ...card, ...payloadCard } : card);
     case DELETE_CARD:
-      const payloadId: string = payload as unknown as string;
+      const payloadId: string = payload as string;
       
       return cards.filter((card: Card) => card.id !== payloadId);
     default:

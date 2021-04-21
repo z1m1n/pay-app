@@ -33,7 +33,7 @@ const CardModal: FC<CardModalProps> = (props: CardModalProps) => {
   
   const dispatch = useDispatch();
   const cards: Card[] = useSelector<RootState, Card[]>(state => state.cards);
-  const [selectedCard, setSelectedCard] = useState<Card>();
+  
   const [formInitialValues, setFormInitialValues] = useState<CardForm>(FORM_EMPTY_VALUES);
   
   const onSubmit = (values: CardForm) => {
@@ -61,7 +61,6 @@ const CardModal: FC<CardModalProps> = (props: CardModalProps) => {
     const card: Card | undefined = cards.find((card: Card) => card.id === editId);
     
     if (card) {
-      setSelectedCard(card);
       setFormInitialValues(card);
     }
   }, [editId, cards]);
