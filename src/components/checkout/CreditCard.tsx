@@ -155,6 +155,7 @@ const CreditCard: FC<CreditCardProps> = ({ id }) => {
             <Button
               type="submit" 
               color="primary"
+              block
             >
               Pay
             </Button>

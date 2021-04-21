@@ -7,5 +7,12 @@
 
   .navbar-brand {
     font-weight: $font-weight-bold;
+    display: flex;
+    align-items: center;
+
+    .svg-icon {
+      display: block;
+      margin-right: .5rem;
+    }
   }
 }

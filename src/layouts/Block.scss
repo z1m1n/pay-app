@@ -13,7 +13,10 @@
       width: 100%;
       padding: 2rem;
       background: #FFF;
-      text-align: center;
+
+      .page-header {
+        text-align: center;
+      }
     }
   }
 }
