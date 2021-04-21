@@ -5,7 +5,7 @@ import './Footer.scss';
 const Footer: FC = () => (
   <footer className="app-footer">
     <div className="container">
-      2021 &copy;
+      &copy; 2021 Konstantin Zimin
     </div>
   </footer>
 );

@@ -14,7 +14,7 @@ const CardsPage: FC = () => {
 
   return (
     <div className="page page-cards">
-      <div className="page-header">
+      <div className="page-header with-actions">
         <h1>Saved Cards</h1>
         <div className="page-header-actions">
           <Button 

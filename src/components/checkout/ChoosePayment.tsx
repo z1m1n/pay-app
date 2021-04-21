@@ -84,6 +84,7 @@ const ChoosePayment: FC = () => {
     <div className="page-buttons">
       <Button
         color="primary"
+        block
         disabled={selectedPayment === PaymentType.SavedCard && !selectedCard}
         onClick={goToCheckout}
       >

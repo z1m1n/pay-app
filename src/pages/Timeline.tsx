@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from 'store/types';
 import { Payment } from 'store/actions/payments/types';
 import { Table } from 'reactstrap';
-import Icon from 'components/icon';
+import Icon from 'components/Icon';
 
 const TimelinePage: FC = () => {
   const payments: Payment[] = useSelector<RootState, Payment[]>(state => state.payments);

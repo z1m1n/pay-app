@@ -8,9 +8,12 @@
 
     .app-content-box {
       border: 1px solid $border-color;
+      box-shadow: $container-box-shadow;
       max-width: 30rem;
       width: 100%;
-      padding: 1rem;
+      padding: 2rem;
+      background: #FFF;
+      text-align: center;
     }
   }
 }

@@ -2,12 +2,15 @@ import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 import { Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from "reactstrap";
 
+import './Header.scss';
+
 const Header: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const toggle = () => setIsOpen(!isOpen);
   return (
     <Navbar 
+      className="app-header"
       color="light" 
       light 
       expand="md"

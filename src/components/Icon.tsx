@@ -1,6 +1,8 @@
 import { FC } from "react";
 import SVG from 'react-inlinesvg';
 
+import './Icon.scss';
+
 interface IconProps {
   name: string;
   className?: string;

@@ -1,4 +1,4 @@
-import Icon from 'components/icon';
+import Icon from 'components/Icon';
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
@@ -33,6 +33,7 @@ const ApplePay: FC = () => {
         </div>
         <div className="page-content">
           <Button
+            block
             color="primary"
             onClick={payWithApplePay}
           >

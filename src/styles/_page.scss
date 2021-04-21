@@ -1,14 +1,19 @@
 .page {
   .page-header {
-    display: flex;
-    align-items: center;
+    padding: 1.5rem 0 2rem;
 
     h1 {
       font-size: 2rem;
+      margin: 0;
     }
 
-    .page-header-actions {
-      margin-left: auto;
+    &.with-actions {
+      display: flex;
+      align-items: center;
+      
+      .page-header-actions {
+        margin-left: auto;
+      }
     }
   }
 
