@@ -14,9 +14,9 @@ export const editCard = (card: Card) => {
   };
 };
 
-export const deleteCard = (card: Card) => {
+export const deleteCard = (id: string) => {
   return {
     type: DELETE_CARD,
-    payload: card
+    payload: id
   };
 };

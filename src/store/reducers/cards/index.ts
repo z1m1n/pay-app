@@ -2,16 +2,20 @@ import { ADD_CARD, Card, CardActionTypes, DELETE_CARD, EDIT_CARD } from "store/a
 
 const initialState: Card[] = [];
 
-const cardsReducer = (cards = initialState, action: CardActionTypes) => {
+const cardsReducer = (cards = initialState, action: CardActionTypes): Card[] => {
   const { type, payload } = action;
 
   switch (type) {
     case ADD_CARD:
-      return [...cards, payload];
+      return [...cards, payload as Card];
     case EDIT_CARD:
-      return cards.map((card: Card) => card.id === payload.id ? { ...card, ...payload } : card);
+      const payloadCard: Card = payload as Card;
+
+      return cards.map((card: Card) => card.id === payloadCard.id ? { ...card, ...payloadCard } : card);
     case DELETE_CARD:
-      return cards.filter(({ id }) => id !== payload.id);
+      const payloadId: string = payload as unknown as string;
+      
+      return cards.filter((card: Card) => card.id !== payloadId);
     default:
       return cards;
   };

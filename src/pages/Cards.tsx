@@ -1,4 +1,6 @@
-import { FC } from 'react';
+import CardModal from 'components/cards/CardModal';
+import DeleteCardModal from 'components/cards/DeleteModal';
+import { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Button, Table } from 'reactstrap';
 import { Card } from 'store/actions/cards/types';
@@ -6,13 +8,19 @@ import { RootState } from 'store/types';
 
 const CardsPage: FC = () => {
   const cards: Card[] = useSelector<RootState, Card[]>(state => state.cards);
+  const [addCardOpen, setAddCardOpen] = useState<boolean>(false);
+  const [deleteId, setDeleteId] = useState<string>();
+  const [editId, setEditId] = useState<string>();
 
   return (
     <div className="page page-cards">
       <div className="page-header">
         <h1>Saved Cards</h1>
         <div className="page-header-actions">
-          <Button color="primary">
+          <Button 
+            color="primary"
+            onClick={() => setAddCardOpen(true)}
+          >
             Add Card
           </Button>
         </div>
@@ -43,10 +51,16 @@ const CardsPage: FC = () => {
                   {card.number}
                 </td>
                 <td>
-                  <Button color="outline-primary">
+                  <Button 
+                    color="outline-primary"
+                    onClick={() => setEditId(card.id)}
+                  >
                     Edit
                   </Button>
-                  <Button color="outline-danger">
+                  <Button 
+                    color="outline-danger"
+                    onClick={() => setDeleteId(card.id)}
+                  >
                     Delete
                   </Button>
                 </td>
@@ -54,6 +68,22 @@ const CardsPage: FC = () => {
             ))}
           </tbody>
         </Table>
+        <DeleteCardModal 
+          isOpen={!!deleteId}
+          toggle={() => setDeleteId(undefined)}
+          deleteId={deleteId}
+        />
+        <CardModal
+          title="Add Card"
+          isOpen={addCardOpen}
+          toggle={() => setAddCardOpen(false)}
+        />
+        <CardModal
+          title="Edit Card"
+          isOpen={!!editId}
+          toggle={() => setEditId(undefined)}
+          editId={editId}
+        />
       </div>
     </div>
   )

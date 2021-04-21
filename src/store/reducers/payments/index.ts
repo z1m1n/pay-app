@@ -2,7 +2,7 @@ import { PaymentsActionTypes, MAKE_PAYMENT, Payment } from "store/actions/paymen
 
 const initialState: Payment[] = [];
 
-const paymentsReducer = (payments = initialState, action: PaymentsActionTypes) => {
+const paymentsReducer = (payments = initialState, action: PaymentsActionTypes): Payment[] => {
   const { type, payload } = action;
 
   switch (type) {

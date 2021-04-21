@@ -17,11 +17,11 @@ interface AddCardAction {
 interface EditCardAction {
   type: typeof EDIT_CARD,
   payload: Card;
-}
+};
 
 interface DeleteCardAction {
   type: typeof DELETE_CARD,
-  payload: Card;
-}
+  payload: string;
+};
 
 export type CardActionTypes = AddCardAction | EditCardAction | DeleteCardAction;
