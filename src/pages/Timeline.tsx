@@ -16,6 +16,7 @@ const TimelinePage: FC = () => {
       <div className="page-content">
         <Table
           responsive={true}
+          striped={true}
         >
           <thead>
             <tr>
@@ -32,12 +33,16 @@ const TimelinePage: FC = () => {
             {payments.map((payment: Payment) => (
               <tr key={payment.id}>
                 <td>{payment.name}</td>
-                {payment.applePay && (
-                  <td>
+                <td>
+                  {payment.applePay && <>
                     <Icon name="apple" />
                     Apple Pay
-                  </td>
-                )}
+                  </>}
+                  {payment.card && <>
+                    <Icon name="credit-card" />
+                    {payment.card?.number}. Credit Card
+                  </>}
+                </td>
               </tr>
             ))}
           </tbody>

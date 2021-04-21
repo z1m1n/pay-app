@@ -62,15 +62,29 @@ const ChoosePayment: FC = () => {
         </select>
       </div>
       {selectedPayment === PaymentType.SavedCard && (
-        <select>
-          {}
-        </select>
+        <div className="form-group">
+          <select
+            value={selectedCard?.id ?? ''}
+            onChange={e => setSelectedCard(cards.find((card: Card) => card.id === e.target.value))}
+            className="form-control"
+          >
+            <option>Select Card</option>
+            {cards.map((card: Card) => (
+              <option
+                value={card.id}
+                key={card.id}
+              >
+                {card.number}
+              </option>           
+            ))}
+          </select>
+        </div>
       )}
     </div>
     <div className="page-buttons">
       <Button
         color="primary"
-        disabled={selectedPayment === PaymentType.SavedCard && !setSelectedCard}
+        disabled={selectedPayment === PaymentType.SavedCard && !selectedCard}
         onClick={goToCheckout}
       >
         Continue to Checkout

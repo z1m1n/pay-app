@@ -1,9 +1,16 @@
 import FormError from 'components/form/Error';
 import { Field, Form, Formik } from 'formik';
 import { FC, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'reactstrap';
-import { fieldInvalidClass } from 'utils';
+import { makePayment } from 'store/actions/payments';
+import { fieldInvalidClass, uniqueId } from 'utils';
 import schema from './CreditCard.schema';
+import { Payment } from 'store/actions/payments/types';
+import { Card } from 'store/actions/cards/types';
+import { addCard } from 'store/actions/cards';
+import { useHistory } from 'react-router';
+import { RootState } from 'store/types';
 
 interface CreditCardProps {
   id?: string;
@@ -16,19 +23,56 @@ interface CreditCardForm {
   cvc: string; 
 };
 
+const FORM_EMPTY_VALUES = {
+  name: '',
+  number: '',
+  expiration: '',
+  cvc: ''
+};
+
 const CreditCard: FC<CreditCardProps> = ({ id }) => {
-  const [formInitialValues, setFormInitialValues] = useState<CreditCardForm>({
-    name: '',
-    number: '',
-    expiration: '',
-    cvc: ''
-  });
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const cards: Card[] = useSelector<RootState, Card[]>(state => state.cards);
+
+  const [selectedCard, setSelectedCard] = useState<Card>();
+  const [formInitialValues, setFormInitialValues] = useState<CreditCardForm>(FORM_EMPTY_VALUES);
 
   useEffect(() => {
     if (!id) return;
 
-    //setFormInitialValues();
-  }, [id]);
+    const card: Card | undefined = cards.find((card: Card) => card.id === id);
+    
+    if (card) {
+      setSelectedCard(card);
+      setFormInitialValues({
+        ...card,
+        cvc: ''
+      });
+    }
+  }, [id, cards]);
+
+  const onSubmit = (values: CreditCardForm) => {
+    const card: Card = selectedCard ?? {
+      id: uniqueId(),
+      ...values
+    };
+
+    const payment: Payment = {
+      id: uniqueId(),
+      card: card,
+      name: card.name,
+      applePay: false
+    };
+
+    if (!selectedCard) {
+      dispatch(addCard(card));
+    }
+
+    dispatch(makePayment(payment));
+
+    history.replace('/timeline');
+  };
 
   return <>
     <div className="page-header">
@@ -38,9 +82,7 @@ const CreditCard: FC<CreditCardProps> = ({ id }) => {
       validationSchema={schema}
       enableReinitialize={true}
       initialValues={formInitialValues}
-      onSubmit={(values, actions) => {
-        console.log(values)
-      }}
+      onSubmit={onSubmit}
     >
       {({
         values,
