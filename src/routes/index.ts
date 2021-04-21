@@ -13,7 +13,7 @@ const MainLayout = lazy(() => import('layouts/Main'));
 
 const routes: AppRoute[] = [
   {
-    path: '/checkout',
+    path: '/checkout/:type?/:id?',
     component: lazy(() => import('pages/Checkout')),
     title: 'Checkout',
     layout: BlockLayout

@@ -1,11 +1,11 @@
 import { combineReducers, Reducer } from 'redux';
 import { RootState } from 'store/types';
 import cardsReducer from 'store/reducers/cards';
-import checkoutReducer from 'store/reducers/checkout';
+import paymentsReducer from 'store/reducers/payments';
 
 const rootReducer: Reducer<RootState> = combineReducers<RootState>({
   cards: cardsReducer,
-  checkout: checkoutReducer
+  payments: paymentsReducer
 });
 
 export default rootReducer;

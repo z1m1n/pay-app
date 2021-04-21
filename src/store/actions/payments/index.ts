@@ -1,4 +1,4 @@
-import { MAKE_PAYMENT, Payment } from "store/actions/checkout/types";
+import { MAKE_PAYMENT, Payment } from "store/actions/payments/types";
 
 export const makePayment = (payment: Payment) => {
   return {

@@ -7,7 +7,6 @@ export interface Card {
   name: string;
   number: string;
   expiration: string;
-  cvc: string;
 };
 
 interface AddCardAction {

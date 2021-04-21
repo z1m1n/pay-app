@@ -9,7 +9,7 @@ export interface Payment {
   applePay: boolean;
 };
 
-export interface CheckoutActionTypes {
+export interface PaymentsActionTypes {
   type: typeof MAKE_PAYMENT;
   payload: Payment;
 };
