@@ -4,6 +4,8 @@
   thead {
     > tr {
       > th {
+        border-top: 0;
+        
         &.actions {
           width: 1%;
           white-space: nowrap;

@@ -17,7 +17,10 @@ const Header: FC = () => {
       expand="md"
     >
       <div className="container">
-        <NavbarBrand to="/">
+        <NavbarBrand 
+          tag={Link} 
+          to="/"
+        >
           <Icon name="cash" />
           Pay App
         </NavbarBrand>

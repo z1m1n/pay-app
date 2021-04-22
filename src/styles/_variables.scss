@@ -7,11 +7,10 @@ $enable-shadows: true;
 $body-color: #4D4F51;
 $body-bg: #F8FAFC;
 
-$secondary: #D9E6F2;
+$link-color: #39C697;
+$link-hover-color: #28B586;
 
 $font-family-base: 'Roboto', Arial, Helvetica, sans-serif;
-
-$border-color: $secondary;
 
 $buttons-box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .04);
 $container-box-shadow: 0 .25rem .25rem rgba(0, 0, 0, .04);
@@ -22,7 +21,7 @@ $header-box-shadow: 0 .25rem .25rem rgba(0, 0, 0, .04);
 $border-radius-sm: .1875rem;
 $border-radius: .25rem;
 $border-radius-lg: .35rem;
-$border-color: $secondary;
+$border-color: #D9E6F2;
 $border-color-hover: darken($border-color, 5%);
 
 $btn-font-weight: $font-weight-bold;
@@ -61,3 +60,20 @@ $modal-content-border-color: $body-bg;
 $modal-backgrop-bg: #333;
 $modal-footer-padding: 1.5rem 2.25rem;
 $modal-body-padding: 0 2.25rem 2.5rem;
+
+$table-accent-bg: #F4F9FE;
+
+$theme-colors: ();
+$theme-colors: map-merge(
+  (
+    "primary":    $primary,
+    "secondary":  $secondary,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "danger":     $danger,
+    "light":      $light,
+    "dark":       $dark
+  ),
+  $theme-colors
+);

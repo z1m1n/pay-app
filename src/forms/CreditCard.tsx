@@ -1,5 +1,5 @@
 import { Field, Formik } from "formik";
-import { FC } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 import { Form } from "reactstrap";
 import FormError from 'components/form/Error';
 import { fieldInvalidClass } from 'utils';
@@ -14,7 +14,7 @@ export interface CreditCardFormFields {
 };
 
 interface CreditCardFormProps {
-  setSubmitForm: any;
+  setSubmitForm: Dispatch<SetStateAction<() => Promise<void>>>;
   onSubmit(values: CreditCardFormFields): void;
   initialValues: CreditCardFormFields;
   showCVC?: boolean;
