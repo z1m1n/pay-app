@@ -34,7 +34,7 @@ const ChoosePayment: FC = () => {
 
   return <>
     <div className="page-header">
-      <h1>Choose a payment</h1>
+      <h1>Choose a Payment</h1>
     </div>
     <div className="page-content">
       <div className="form-group">

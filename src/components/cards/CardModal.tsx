@@ -1,13 +1,12 @@
-import FormError from 'components/form/Error';
-import { Field, Form, Formik } from 'formik';
+
+import CreditCardForm, { CreditCardFormFields } from 'forms/CreditCard';
 import { FC, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Modal, ModalBody, ModalFooter, ModalHeader, Button } from 'reactstrap';
 import { addCard, editCard } from 'store/actions/cards';
 import { Card } from 'store/actions/cards/types';
 import { RootState } from 'store/types';
-import { fieldInvalidClass, uniqueId } from 'utils';
-import schema from './CardModal.schema';
+import { uniqueId } from 'utils';
 
 interface CardModalProps {
   title: string;
@@ -16,17 +15,13 @@ interface CardModalProps {
   editId?: string;
 };
 
-interface CardForm {
-  name: string;
-  number: string;
-  expiration: string;
-};
-
 const FORM_EMPTY_VALUES = {
   name: '',
   number: '',
   expiration: '',
 };
+
+type CreditCardFields = Omit<CreditCardFormFields, 'cvc'>;
 
 const CardModal: FC<CardModalProps> = (props: CardModalProps) => {
   const { title, isOpen, editId, toggle } = props;
@@ -34,9 +29,10 @@ const CardModal: FC<CardModalProps> = (props: CardModalProps) => {
   const dispatch = useDispatch();
   const cards: Card[] = useSelector<RootState, Card[]>(state => state.cards);
   
-  const [formInitialValues, setFormInitialValues] = useState<CardForm>(FORM_EMPTY_VALUES);
-  
-  const onSubmit = (values: CardForm) => {
+  const [formInitialValues, setFormInitialValues] = useState<CreditCardFields>(FORM_EMPTY_VALUES);
+  const [submitForm, setSubmitForm] = useState<() => Promise<void>>(async () => {});
+
+  const onSubmit = (values: CreditCardFields) => {
     if (editId) {
       dispatch(editCard({
         id: editId,
@@ -70,80 +66,31 @@ const CardModal: FC<CardModalProps> = (props: CardModalProps) => {
       isOpen={isOpen}
       toggle={toggle}
     >
-      <Formik<CardForm>
-        validationSchema={schema}
-        enableReinitialize={true}
-        initialValues={formInitialValues}
-        onSubmit={onSubmit}
-      >
-        {({
-          values,
-          touched,
-          errors
-        }) => (
-          <Form>
-          <ModalHeader toggle={toggle}>
-            { title }
-          </ModalHeader>
-          <ModalBody>
-            <div className="form-group">
-              <label htmlFor="name">
-                Name on Card
-              </label>
-              <Field 
-                name="name"
-                id="name"
-                autoComplete="cc-name"
-                className={`form-control ${fieldInvalidClass<CardForm>(touched, errors, 'name')}`.trim()}
-                placeholder="John Doe"
-                value={values.name}
-              />
-              <FormError name="name" />
-            </div>
-            <div className="form-group">
-              <label htmlFor="number">
-                Card Number
-              </label>
-              <Field 
-                name="number"
-                id="number"
-                autoComplete="cc-number"
-                className={`form-control ${fieldInvalidClass<CardForm>(touched, errors, 'number')}`.trim()}
-                placeholder="1234 1234 1234 1234"
-              />
-              <FormError name="number" />
-            </div>
-            <div className="form-group">
-              <label htmlFor="expiration">
-                Expiration
-              </label>
-              <Field 
-                name="expiration"
-                id="expiration"
-                autoComplete="cc-exp"
-                className={`form-control ${fieldInvalidClass<CardForm>(touched, errors, 'expiration')}`.trim()}
-                placeholder="MM/YY"
-              />
-              <FormError name="expiration" />
-            </div>
-          </ModalBody>
-          <ModalFooter>
-            <Button 
-              color="outline-secondary"
-              onClick={toggle}
-            >
-              Cancel
-            </Button>
-            <Button 
-              type="submit"
-              color="primary"
-            >
-              {editId ? 'Save' : 'Add'}
-            </Button>
-          </ModalFooter>
-          </Form>
-        )}
-      </Formik>
+      <ModalHeader toggle={toggle}>
+        { title }
+      </ModalHeader>
+      <ModalBody>
+        <CreditCardForm
+          initialValues={formInitialValues}
+          onSubmit={onSubmit}
+          showCVC={false}
+          setSubmitForm={setSubmitForm}
+        />
+      </ModalBody>
+      <ModalFooter>
+        <Button 
+          color="outline-secondary"
+          onClick={toggle}
+        >
+          Cancel
+        </Button>
+        <Button 
+          color="primary"
+          onClick={submitForm}
+        >
+          {editId ? 'Save' : 'Add'}
+        </Button>
+      </ModalFooter>
     </Modal>
   );
 };

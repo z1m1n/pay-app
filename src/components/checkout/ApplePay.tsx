@@ -35,6 +35,7 @@ const ApplePay: FC = () => {
           <Button
             block
             color="primary"
+            className="btn-icon"
             onClick={payWithApplePay}
           >
             <Icon name="apple" />

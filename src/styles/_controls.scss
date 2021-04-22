@@ -10,3 +10,20 @@ select {
     }
   }
 }
+
+.btn {
+  &.btn-icon {
+    display: flex;
+    align-items: center;
+    
+    &.btn-block {
+      justify-content: center;
+    }
+
+    .svg-icon {
+      display: block;
+      margin-right: .5rem;
+      height: 1.25em;
+    }
+  }
+}
