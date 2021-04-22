@@ -60,6 +60,7 @@ const CreditCardForm: FC<CreditCardFormProps> = (props: CreditCardFormProps) => 
               autoComplete="cc-number"
               className={`form-control ${fieldInvalidClass<CreditCardFormFields>(touched, errors, 'number')}`.trim()}
               placeholder="1234 1234 1234 1234"
+              maxLength="16"
             />
             <FormError name="number" />
           </div>
@@ -91,6 +92,7 @@ const CreditCardForm: FC<CreditCardFormProps> = (props: CreditCardFormProps) => 
                     autoComplete="cc-csc"
                     className={`form-control ${fieldInvalidClass<CreditCardFormFields>(touched, errors, 'cvc')}`.trim()}
                     placeholder="CVC"
+                    maxLength="3"
                   />
                   <FormError name="cvc" />
                 </div>
