@@ -4,6 +4,7 @@ import { Button } from 'reactstrap';
 import { RootState } from 'store/types';
 import { Card } from 'store/actions/cards/types';
 import { useHistory } from 'react-router';
+import { maskCardNumber } from 'utils';
 
 export enum PaymentType {
   CreditCard = 'card',
@@ -74,7 +75,7 @@ const ChoosePayment: FC = () => {
                 value={card.id}
                 key={card.id}
               >
-                {card.number}
+                {maskCardNumber(card.number)}
               </option>           
             ))}
           </select>

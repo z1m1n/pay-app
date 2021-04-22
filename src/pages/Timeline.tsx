@@ -4,6 +4,7 @@ import { RootState } from 'store/types';
 import { Payment } from 'store/actions/payments/types';
 import { Table } from 'reactstrap';
 import Icon from 'components/Icon';
+import { maskCardNumber } from 'utils';
 
 const TimelinePage: FC = () => {
   const payments: Payment[] = useSelector<RootState, Payment[]>(state => state.payments);
@@ -41,7 +42,7 @@ const TimelinePage: FC = () => {
                     </>}
                     {payment.card && <>
                       <Icon name="credit-card" />
-                      {payment.card?.number}. Credit Card
+                      {maskCardNumber(payment.card.number)}. Credit Card
                     </>}
                   </div>
                 </td>

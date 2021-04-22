@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { Button, Table } from 'reactstrap';
 import { Card } from 'store/actions/cards/types';
 import { RootState } from 'store/types';
+import { maskCardNumber } from 'utils';
 
 const CardsPage: FC = () => {
   const cards: Card[] = useSelector<RootState, Card[]>(state => state.cards);
@@ -47,8 +48,7 @@ const CardsPage: FC = () => {
             {cards.map((card: Card) => (
               <tr key={card.id}>
                 <td>
-                  {card.name}
-                  {card.number}
+                  {card.name}. {maskCardNumber(card.number)}
                 </td>
                 <td className="actions">
                   <Button 
