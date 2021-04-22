@@ -34,14 +34,16 @@ const TimelinePage: FC = () => {
               <tr key={payment.id}>
                 <td>{payment.name}</td>
                 <td>
-                  {payment.applePay && <>
-                    <Icon name="apple" />
-                    Apple Pay
-                  </>}
-                  {payment.card && <>
-                    <Icon name="credit-card" />
-                    {payment.card?.number}. Credit Card
-                  </>}
+                  <div className="card-info">
+                    {payment.applePay && <>
+                      <Icon name="apple" />
+                      Apple Pay
+                    </>}
+                    {payment.card && <>
+                      <Icon name="credit-card" />
+                      {payment.card?.number}. Credit Card
+                    </>}
+                  </div>
                 </td>
               </tr>
             ))}

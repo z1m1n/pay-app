@@ -3,7 +3,7 @@
 .app-header {
   background: $header-bg;
   box-shadow: $header-box-shadow;
-  height: 5rem;
+  min-height: 5rem;
 
   .navbar-brand {
     font-weight: $font-weight-bold;

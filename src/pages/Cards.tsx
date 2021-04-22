@@ -33,7 +33,7 @@ const CardsPage: FC = () => {
           <thead>
             <tr>
               <th>Card</th>
-              <th>Actions</th>
+              <th className="actions">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -50,15 +50,15 @@ const CardsPage: FC = () => {
                   {card.name}
                   {card.number}
                 </td>
-                <td>
+                <td className="actions">
                   <Button 
-                    color="outline-primary"
+                    color="link"
                     onClick={() => setEditId(card.id)}
                   >
                     Edit
                   </Button>
                   <Button 
-                    color="outline-danger"
+                    color="link"
                     onClick={() => setDeleteId(card.id)}
                   >
                     Delete

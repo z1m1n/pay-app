@@ -86,7 +86,7 @@ const CardModal: FC<CardModalProps> = (props: CardModalProps) => {
         </Button>
         <Button 
           color="primary"
-          onClick={submitForm}
+          onClick={() => submitForm()}
         >
           {editId ? 'Save' : 'Add'}
         </Button>

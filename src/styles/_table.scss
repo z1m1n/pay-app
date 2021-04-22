@@ -1,0 +1,45 @@
+.table {
+  margin: 0;
+
+  thead {
+    > tr {
+      > th {
+        &.actions {
+          width: 1%;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  tbody {
+    > tr {
+      > td {
+        &.actions {
+          width: 1%;
+          white-space: nowrap;
+
+          .btn {
+            padding: 0 .5rem;
+            border: 0;
+            box-shadow: none;
+
+            & + .btn {
+              margin-left: .25rem;
+            }
+          }
+        }
+
+        .card-info {
+          display: flex;
+          align-items: center;
+
+          .svg-icon {
+            display: block;
+            margin-right: .5rem;
+          }
+        }
+      }
+    }
+  }
+}

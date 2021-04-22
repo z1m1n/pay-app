@@ -81,7 +81,7 @@ const CreditCard: FC<CreditCardProps> = ({ id }) => {
       <Button
         color="primary"
         block
-        onClick={submitForm}
+        onClick={() => submitForm()}
       >
         Pay
       </Button>
